@@ -8,7 +8,13 @@
 
 Selecciona el empleado que quieres consultar la Categoria: <select name="empleado">
 	<?php
-	 require('../models/modelousuario.php');
+	 include('session.php');
+
+	$sql = "SELECT emp_no FROM employees LIMIT 200";
+	$resultado = mysqli_query($conn,$sql);
+	while($fila = mysqli_fetch_assoc($resultado)){
+		echo "<option value='".$fila['emp_no']."'>".$fila['emp_no']."</option>";
+	}
 	?>
 </select>
 <input type="submit" value="Consultar"><br>
